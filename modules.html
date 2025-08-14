@@ -11,7 +11,6 @@ body {
   font-family: 'Segoe UI', Roboto, Arial, sans-serif;
   color: #1e293b;
   margin: 0;
-  height: 100vh;
 }
 
 /* Header */
@@ -39,11 +38,12 @@ nav a:hover {
 
 /* Tabs */
 .tabs {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 15px;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1em;
+  padding: 20px;
+  width: 70%;
+  margin: auto;
 }
 .tab {
   background: white;
@@ -56,24 +56,20 @@ nav a:hover {
   transition: all 0.2s ease;
 }
 .tab:hover {
-  background: #38bdf8;
+  background: rgb(0,0,0,0.3);
   color: white;
-}
-.tab.active {
-  background: #38bdf8;
-  color: white;
-  border-color: #38bdf8;
 }
 
-/* Layout */
+
 .block {
-  display: grid;
+  display: none; /* скрыто изначально */
   grid-template-columns: 35% 65%;
   gap: 20px;
   padding: 20px;
   max-width: 1300px;
   margin: auto;
 }
+
 
 
 /* Playlist */
@@ -105,6 +101,9 @@ nav a:hover {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
   border: 2px solid transparent;
 }
+.tab{
+  font-size: 18px;
+}
 .card:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -128,21 +127,22 @@ nav a:hover {
 }
 
 .player {
-  background: white;
-  padding: 10px;
   height: auto; /* пусть подстраивается под контент */
   border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
   align-self: start; /* чтобы блок прижимался к верху */
 }
 
 .player iframe {
+  background: white;
+  padding: 10px;
   width: 100%;
-  aspect-ratio: 16/9; /* фиксируем пропорции видео */
+  aspect-ratio: 16/9; 
   height: auto;
   border-radius: 6px;
-}
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border: 0px;
 
+}
 
 
 /* Footer */
@@ -160,6 +160,18 @@ footer {
   font-weight: 600;
   color: #334155;
 }
+main{
+  height: 90vh;
+  align-content: center;
+}
+.module-title{
+  margin: 0px;
+}
+.video-title{
+  margin-bottom: 20px;
+}
+
+
 @media (max-width: 900px) {
   .block {
     grid-template-columns: 1fr;
@@ -168,18 +180,41 @@ footer {
     margin-left: -10px;
     height: auto;
     order: -1; /* Переносим плеер наверх */
+    margin-top: 0px;
+  }
+  
+  .tabs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  main{
+    height: 90vh;
+    align-content: center;
+  }
+  .tabs{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .grid{
+    height: 500px;
+  }
+  .module-title{
+    margin: 0px;
+  }
+  .video-title{
+    margin-bottom: 20px;
   }
 }
+
 
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Образовательные модули</h1>
+  <h1>OtanHolding</h1>
   <nav>
     <a href="index.html">Главная</a>
-    <a href="modules.html">Модули</a>
   </nav>
 </header>
 
@@ -187,10 +222,14 @@ footer {
   <div id="tabs" class="tabs"></div>
 
   <div class="block">
-    <div id="grid" class="grid"></div>
+    <div>
+      <div id="grid" class="grid"></div>
+    </div>
+
     <div class="player">
-      <iframe id="videoPlayer" allowfullscreen></iframe>
+      <h2 id="moduleTitle" class="module-title"></h2>
       <div id="videoTitle" class="video-title"></div>
+      <iframe id="videoPlayer" allowfullscreen></iframe>
     </div>
 
   </div>
@@ -204,35 +243,64 @@ footer {
 const tabsEl = document.getElementById('tabs');
 const gridEl = document.getElementById('grid');
 const videoPlayer = document.getElementById('videoPlayer');
+const blockEl = document.querySelector('.block');
+const headerEl = document.querySelector('header');
 
 let currentSection = Object.keys(data)[0] || '';
 let currentVideo = '';
+let backBtn = null; // кнопка возврата
 
 function renderTabs(){
   tabsEl.innerHTML = '';
   Object.keys(data).forEach(section=>{
     const btn = document.createElement('button');
-    btn.className = 'tab' + (section===currentSection ? ' active':'');
-    btn.textContent = section;
+    btn.className = 'tab' + (section === currentSection ? ' active' : '');
+
+    // Картинка модуля
+    const imgEl = document.createElement('img');
+    imgEl.src = data[section].img;
+    imgEl.style.width = '100%';
+    imgEl.style.objectFit = 'cover';
+    imgEl.style.borderRadius = '6px';
+    btn.appendChild(imgEl);
+
+    const textEl = document.createElement('div');
+    textEl.textContent = section;
+    textEl.style.marginTop = '5px';
+    btn.appendChild(textEl);
+
     btn.addEventListener('click', ()=>{
       currentSection = section;
       loadSection();
       renderTabs();
+      showModuleView();
     });
+
     tabsEl.appendChild(btn);
   });
 }
 
+
 function loadSection(){
-  const items = data[currentSection] || [];
+  const moduleData = data[currentSection];
+  const items = moduleData.videos || [];
+  
+  // Заголовок модуля
+  document.getElementById('moduleTitle').textContent = currentSection;
+
+  // Показываем первую видеозапись
   if(items.length > 0){
     currentVideo = items[0].url;
     videoPlayer.src = currentVideo;
     document.getElementById('videoTitle').textContent = 'Урок: ' + (items[0].title || '');
+  } else {
+    currentVideo = '';
+    videoPlayer.src = '';
+    document.getElementById('videoTitle').textContent = '';
   }
+
   renderGrid(items);
 }
-
 
 function renderGrid(items){
   gridEl.innerHTML = '';
@@ -242,25 +310,52 @@ function renderGrid(items){
     card.addEventListener('click', ()=>{
       currentVideo = it.url;
       videoPlayer.src = currentVideo;
-      document.getElementById('videoTitle').textContent = 'Урок: ' + (it.title || ('Видео ' + (idx+1)));
+      document.getElementById('videoTitle').textContent = 'Урок ' + (idx+1) + ': ' + (it.title || '');
       renderGrid(items);
     });
 
-    // Бейдж с названием урока
     const titleBadge = document.createElement('span');
     titleBadge.className = 'badge';
-    titleBadge.textContent = 'Урок: ' + (it.title || ('Видео ' + (idx+1)));
+    titleBadge.textContent = (idx+1) + '. ' + (it.title || ('Видео ' + (idx+1)));
     card.appendChild(titleBadge);
-
-    
 
     gridEl.appendChild(card);
   });
 }
 
 
+// --- Новый функционал ---
+function showModuleView(){
+  tabsEl.style.display = 'none';
+  blockEl.style.display = 'grid';
+  
+  // Добавляем кнопку "Модули" в header, если её нет
+  if(!backBtn){
+    backBtn = document.createElement('a');
+    backBtn.href = '#';
+    backBtn.textContent = 'Модули';
+    backBtn.style.marginLeft = '20px';
+    backBtn.style.color = '#38bdf8';
+    backBtn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      showTabsView();
+    });
+    headerEl.querySelector('nav').appendChild(backBtn);
+  }
+}
+
+function showTabsView(){
+  tabsEl.style.display = 'grid';
+  blockEl.style.display = 'none';
+  if(backBtn){
+    backBtn.remove();
+    backBtn = null;
+  }
+}
+
 renderTabs();
 loadSection();
+
 </script>
 </body>
 </html>
