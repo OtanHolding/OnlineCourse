@@ -1,5 +1,7 @@
 const data = {
-  "модуль 1": [
+  "Көшбасшылық бойынша қалыптастыру курсы. Модуль 1": {
+    "img": "https://otanholding.educenter.kz/storage/poster/197509347367f66d7fb4f1f9.46132390_21.png",
+    "videos": [
     {
       "title": "4 из 57 Отан Холдинг құралдары",
       "url": "https://www.youtube.com/embed/1gZXGmzqwN8?autoplay=0&controls=0&disablekb=1&playsinline=0&cc_load_policy=0&cc_lang_pref=auto&widget_referrer=https%3A%2F%2Fotanholding.educenter.kz%2Flesson%2F107&noCookie=false&rel=0&showinfo=0&iv_load_policy=3&modestbranding=1&autohide=1&enablejsapi=1&origin=https%3A%2F%2Fotanholding.educenter.kz&widgetid=1&forigin=https%3A%2F%2Fotanholding.educenter.kz%2Fapi%2Fv2%2Flesson%2F107%2Fvideo%3Ftoken%3DvxZMMMs38PrFxqhEXfa0LrUW4PCLGlKKKtvmph61rT9IFhqVvJULVvZ0CNX4&aoriginsup=1&aorigins=https%3A%2F%2Fotanholding.educenter.kz&gporigin=https%3A%2F%2Fotanholding.educenter.kz%2Flesson%2F107&vf=3",
@@ -399,8 +401,10 @@ const data = {
         "урок ": "60 из 57 Екінші қадам 10.2-Бөлім"
       }
     }
-  ],
-  "модуль 2": [
+    ]},
+  "Көшбасшылық бойынша қалыптастыру курсы. Модуль 2": {
+    "img": "https://otanholding.educenter.kz/storage/poster/239205764567f66d9774f4c8.59867359_22.png",
+    "videos": [
     {
       "title": "1 из 61 Екінші қадам 8-бөлім",
       "url": "https://www.youtube.com/embed/nQ58gf7cqrc?autoplay=0&controls=0&disablekb=1&playsinline=0&cc_load_policy=0&cc_lang_pref=auto&widget_referrer=https%3A%2F%2Fotanholding.educenter.kz%2Flesson%2F189&noCookie=false&rel=0&showinfo=0&iv_load_policy=3&modestbranding=1&autohide=1&enablejsapi=1&origin=https%3A%2F%2Fotanholding.educenter.kz&widgetid=1&forigin=https%3A%2F%2Fotanholding.educenter.kz%2Fapi%2Fv2%2Flesson%2F189%2Fvideo%3Ftoken%3DvxZMMMs38PrFxqhEXfa0LrUW4PCLGlKKKtvmph61rT9IFhqVvJULVvZ0CNX4&aoriginsup=1&aorigins=https%3A%2F%2Fotanholding.educenter.kz&gporigin=https%3A%2F%2Fotanholding.educenter.kz%2Flesson%2F189&vf=3",
@@ -828,8 +832,10 @@ const data = {
         "урок": "61 из 61 Тоғызыншы қадам - Сезімталдық 6 бөлім"
       }
     }
-  ],
-  "модуль 3": [
+  ]},
+  "Көшбасшылық бойынша қалыптастыру курсы. Модуль 3": {
+    "img": "https://otanholding.educenter.kz/storage/poster/244590294467f66da7e27406.78959255_23.png",
+    "videos": [
     {
       "title": "1 из 56 Оныншы қадам 1-бөлім",
       "url": "https://otanholding.educenter.kz/api/v2/lesson/250/video?token=vxZMMMs38PrFxqhEXfa0LrUW4PCLGlKKKtvmph61rT9IFhqVvJULVvZ0CNX4",
@@ -1222,8 +1228,10 @@ const data = {
         "урок": "56 из 56 1-ші Қадам Сенімділік сапа 4-бөлім"
       }
     }
-  ],
-  "модуль 4": [
+  ]},
+  "Көшбасшылық бойынша қалыптастыру курсы. Модуль 4": {
+    "img": "https://otanholding.educenter.kz/storage/poster/213970286367f66db72e35a6.04879551_24.png",
+    "videos": [
     {
       "title": "1 из 41 Күшейту 2-ші қадам, Назар сапа 1 бөлім",
       "url": "https://otanholding.educenter.kz/api/v2/lesson/426/video?token=vxZMMMs38PrFxqhEXfa0LrUW4PCLGlKKKtvmph61rT9IFhqVvJULVvZ0CNX4",
@@ -1511,5 +1519,5 @@ const data = {
         "урок": "41 из 41 Қорытынды"
       }
     }
-  ]
+  ]}
 }
