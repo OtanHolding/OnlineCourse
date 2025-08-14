@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Шынар Сайын — предприниматель</title>
+<style>
+body {
+    background:#0f172a;
+    color:#e5e7eb;
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    margin:0;
+}
+.hero {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    min-height:100vh;
+    padding:20px;
+    text-align:center;
+}
+.hero img {
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid #2563eb;
+    box-shadow:0 4px 20px rgba(0,0,0,0.5);
+    margin-bottom:20px;
+}
+.hero h1 {
+    font-size:2.2rem;
+    margin-bottom:10px;
+    color:#fff;
+}
+.hero h2 {
+    font-size:1.2rem;
+    margin-bottom:20px;
+    color:#94a3b8;
+}
+.bio {
+    max-width:700px;
+    line-height:1.6;
+    font-size:1rem;
+    margin-bottom:30px;
+}
+.facts {
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:14px;
+    margin-top:20px;
+    max-width:900px;
+    width:100%;
+}
+.fact {
+    background:#0b1220;
+    border:1px solid #334155;
+    padding:16px;
+    border-radius:14px;
+}
+.fact h3 {
+    margin:0 0 8px;
+    color:#fff;
+}
+.fact p {
+    margin:0;
+    font-size:0.9rem;
+    color:#94a3b8;
+}
+.button-primary {
+    display:inline-block;
+    padding:12px 20px;
+    background:#2563eb;
+    color:#fff;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:500;
+    margin-top:0px;
+    margin-bottom: 30px;
+    box-shadow:0 0 0 rgba(37,99,235, 0.7);
+    animation:pulse 2s infinite;
+    transition:background 0.3s ease;
+}
+.button-primary:hover {
+    background:#1e4fd8;
+}
+@keyframes pulse {
+    0% {
+        transform:scale(1);
+        box-shadow:0 0 0 0 rgba(37,99,235, 0.7);
+    }
+    70% {
+        transform:scale(1.05);
+        box-shadow:0 0 0 15px rgba(37,99,235, 0);
+    }
+    100% {
+        transform:scale(1);
+        box-shadow:0 0 0 0 rgba(37,99,235, 0);
+    }
+}
+@media(max-width:600px) {
+    .hero img {width:160px;height:160px}
+}
+</style>
+</head>
+<body>
+<div class="hero">
+    <img src="https://s14.gifyu.com/images/bN6un.png" alt="Шынар Сайын"/>
+    <h1>Шынар Сайын</h1>
+    <h2>Предприниматель в области здоровья и красоты</h2>
+    <div class="bio">
+        <p>Я являюсь предпринимателем с многолетним опытом в создании и развитии бизнеса в сфере здоровья и красоты. 
+        Стремлюсь создавать успешные бизнесы, которые не только отвечают современным требованиям, но и устанавливают 
+        новые стандарты в индустрии красоты и здоровья.</p>
+    </div>
+    <a href="modules.html" class="button-primary">Перейти к модулям</a>
+    <div class="facts">
+        <div class="fact">
+            <h3>Опыт</h3>
+            <p>Многолетний опыт работы с бизнесом и управления командой</p>
+        </div>
+        <div class="fact">
+            <h3>Компании</h3>
+            <p>Основатель Отан Холдинг: Balalife, Al-Hayat, 100Zhas, Saulife, Aryn Med, Laminal, Sulumeken</p>
+        </div>
+        <div class="fact">
+            <h3>Направление</h3>
+            <p>Производитель витаминов, БАД и продуктов лечебного направления</p>
+        </div>
+        <div class="fact">
+            <h3>Контакты</h3>
+            <p>+7 (701) 077 77 24</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
